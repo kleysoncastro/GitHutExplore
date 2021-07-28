@@ -14,6 +14,33 @@ devtool: 'eval-source-map
 para melhor depuração de erros, no lugar de visualizarmos os erros do arquivo bundle.js, ele nos mostrará o
 aquivo js ou jsx que produziu o erro.
 
+Para importar aquivos css para dentro do js/jsx precisamos de dois laader, `style-loader` `css-loader`
+
+```bash
+$ yarn add style-load css-loader
+```
+
+no arquivo webpack.json, nas rules, só adicionar
+```json
+  module: {
+        rules: [
+          { test: /\.jsx$/, exclude: /node_modules/, use: 'babel-loader' },
+          { test: /\.css$/, exclude: /node_modules/, use: ['style-loader', 'css-loader'] },
+         
+        ],
+      },
+```
+Caso seja necessário usar o `sass`, basta baixar o `sass-loader` e `node-sass`. Os aquivos .css -> .scss
+As rules ficaram assim.
+
+```json
+    rules: [
+          { test: /\.jsx$/, exclude: /node_modules/, use: 'babel-loader' },
+          { test: /\.scss$/, exclude: /node_modules/, use: ['style-loader', 'css-loader', 'sass-loader'] },
+         
+        ],
+```
+
 ### cross-env
 
 Esse é um birário injetar no SO a variável de ambinte correta, já que tem diferenças na definição de sistemas win e linux
