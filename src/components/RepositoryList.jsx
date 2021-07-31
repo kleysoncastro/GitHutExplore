@@ -1,3 +1,4 @@
+import '../styles/repositories.scss'
 import { RepositoryItem } from "./RepositoryItem";
 
 export function RespositoryList() {
@@ -12,14 +13,13 @@ export function RespositoryList() {
         
         <section className="repository-list">
             
-            <p>Lista de repositorios</p>
+            <h1>Lista de repositorios</h1>
 
         <ul>
            
         <RepositoryItem repository={repository}/>
         <RepositoryItem repository={repository}/>
         <RepositoryItem repository={repository}/>
-
 
 
 
