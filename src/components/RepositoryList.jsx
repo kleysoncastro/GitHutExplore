@@ -4,12 +4,6 @@ import { RepositoryItem } from "./RepositoryItem";
 
 export function RespositoryList() {
 
-    const repository = {
-        name: "MineGrep",
-        description: "Grep rescrito em Rust",
-        link: "https://github.com/kleysoncastro/minegrep"
-    
-    }
 
     const  [repositories, setrepositories] = useState([]);
 
@@ -19,6 +13,7 @@ export function RespositoryList() {
         .then(data => setrepositories(data))
     }, [repositories])
 
+
     return (
         
         <section className="repository-list">
@@ -26,11 +21,9 @@ export function RespositoryList() {
             <h1>Lista de repositorios</h1>
 
         <ul>
-           
-        <RepositoryItem repository={repository}/>
-        <RepositoryItem repository={repository}/>
-        <RepositoryItem repository={repository}/>
-
+        {repositories.map(repository => {
+        return <RepositoryItem key={repository.name} repository={repository}/>
+            })}
 
 
         </ul>
